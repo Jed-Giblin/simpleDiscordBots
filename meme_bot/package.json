@@ -1,0 +1,20 @@
+{
+  "name": "meme_bot",
+  "version": "1.0.0",
+  "description": "A meme generating discord bot",
+  "main": "meme_bot.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node ./src/meme_bot.ts",
+    "start": "nodemon ./dist/meme_bot.js",
+    "prod": "npm run build && npm run start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/dotenv": "^6.1.0",
+    "discord.js": "^11.4.2",
+    "dotenv": "^6.2.0",
+    "web-request": "^1.0.7"
+  }
+}
