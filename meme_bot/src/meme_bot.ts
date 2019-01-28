@@ -13,7 +13,7 @@ class TemplateData {
     init: boolean = true;
 }
 
-var templateData = new TemplateData();
+const templateData = new TemplateData();
 
 // Log a message once login succeeds
 bot.on("ready", () => {
@@ -43,10 +43,10 @@ function botHelp() {
 }
 
 async function getTemplates(): Promise<string> {
-    var d = '';
-    var options = { uri: "https://memegen.link/api/templates/" ,json: true }
-    var data = await WebRequest.json<any>(options.uri);
-    for ( var property in data ) {
+    let d = '';
+    let options = { uri: "https://memegen.link/api/templates/" ,json: true }
+    let data = await WebRequest.json<any>(options.uri);
+    for ( let property in data ) {
         if (data.hasOwnProperty(property) ) {
             d += data[property].split('/').pop() + "\t, "+property+"\r\n";
         }
@@ -70,7 +70,7 @@ function sendTemplatesToUser(user: User): void {
  * @param user The user to send the message to
  */
 function templatesResponse(user: User): void {
-    var now = new Date().getDate() / 1000;
+    let now = new Date().getDate() / 1000;
 
     if ( now - (templateData.create_time.getDate()/1000) >  604_800 || templateData.init) {
         getTemplates().then((data) => {
@@ -84,9 +84,8 @@ function templatesResponse(user: User): void {
 }
 
 function memeResponse(message: Message): void {
-    var regex = /\!meme /;
-
-    var link = "https://memegen.link/" + message.content.replace(regex, '')
+    let regex = /\!meme /;
+    let link = "https://memegen.link/" + message.content.replace(regex, '')
 
     getMeme(link)
     .then((data) => {
@@ -98,7 +97,7 @@ function memeResponse(message: Message): void {
 }
 
 async function getMeme(uri: string): Promise<string> {
-    var options = { uri: uri ,json: true }
-    var data = await WebRequest.json<any>(options.uri);
+    let options = { uri: uri ,json: true }
+    let data = await WebRequest.json<any>(options.uri);
     return data.direct.visible;
 }
