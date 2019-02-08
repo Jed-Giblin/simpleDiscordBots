@@ -1,6 +1,5 @@
 import {Client, Message, User, Attachment} from "discord.js"
 import * as WebRequest from 'web-request';
-import {Buffer} from 'buffer';
 import * as env from "dotenv";
 
 env.load();
